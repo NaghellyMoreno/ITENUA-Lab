@@ -1,0 +1,24 @@
+html[data-theme='dark'] {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+html[data-theme='dark'] body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+html[data-theme='dark'] .surface {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: 0 12px 32px var(--color-shadow);
+}
+
+html[data-theme='dark'] .panel {
+  background: rgba(40, 90, 72, 0.7);
+  border-color: var(--color-border);
+}
+
+html[data-theme='dark'] .muted {
+  color: var(--color-muted);
+}

@@ -1,30 +1,45 @@
 import katex from 'katex'
+import { useTheme } from './components/hooks/useTheme'
 
 const formula = 'E = mc^2'
-const renderedFormula = katex.renderToString(formula, {
-  throwOnError: false,
-  displayMode: true,
-})
 
 function App() {
+  const { theme, toggleTheme } = useTheme('light')
+
+  const renderedFormula = katex.renderToString(formula, {
+    throwOnError: false,
+    displayMode: true,
+  })
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100 px-6 py-12 text-slate-900">
-      <section className="w-full max-w-2xl rounded-2xl border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-violet-600">
-          Configuración validada
-        </p>
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-          Tailwind + KaTeX funcionando
-        </h1>
+    <main className="app-shell flex min-h-screen items-center justify-center px-6 py-12">
+      <section className="surface w-full max-w-2xl rounded-[var(--radius-lg)] p-8">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
+              Configuración validada
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight text-[var(--color-text)]">
+              Tailwind + KaTeX + tema
+            </h1>
+          </div>
 
-        <p className="mt-4 text-lg text-slate-600">
-          Esta vista confirma que la integración de clases de Tailwind y el render de ecuaciones con KaTeX está activa.
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm font-medium text-[var(--color-text)] transition hover:opacity-90"
+          >
+            {theme === 'light' ? 'Tema oscuro' : 'Tema claro'}
+          </button>
+        </div>
+
+        <p className="text-lg text-[var(--color-muted)]">
+          La paleta, el sistema de temas y el render matemático quedan conectados para apoyar la UI del proyecto.
         </p>
 
-        <div
-          className="mt-8 rounded-xl border border-violet-100 bg-violet-50 p-6 text-center"
-          dangerouslySetInnerHTML={{ __html: renderedFormula }}
-        />
+        <div className="panel mt-8 rounded-[var(--radius-md)] p-6 text-center">
+          <div dangerouslySetInnerHTML={{ __html: renderedFormula }} />
+        </div>
       </section>
     </main>
   )
