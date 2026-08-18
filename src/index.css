@@ -1,11 +1,12 @@
 @import 'tailwindcss';
 @import 'katex/dist/katex.min.css';
+@import './styles/fonts.css';
 @import './styles/tokens.css';
 @import './styles/theme-light.css';
 @import './styles/theme-dark.css';
 
 :root {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.5;
   font-weight: 400;
   color: var(--color-text);
@@ -14,6 +15,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
 }
 
 html {
