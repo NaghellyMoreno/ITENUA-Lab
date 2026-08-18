@@ -1,10 +1,12 @@
 import katex from 'katex'
+import { Moon, SunMedium } from 'lucide-react'
 import { useTheme } from './components/hooks/useTheme'
 
 const formula = 'E = mc^2'
 
 function App() {
   const { theme, toggleTheme } = useTheme('light')
+  const isDark = theme === 'dark'
 
   const renderedFormula = katex.renderToString(formula, {
     throwOnError: false,
@@ -26,10 +28,17 @@ function App() {
 
           <button
             type="button"
+            aria-label={isDark ? 'Activar tema claro' : 'Activar tema oscuro'}
             onClick={toggleTheme}
-            className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm font-medium text-[var(--color-text)] transition hover:opacity-90"
+            className="group relative inline-flex h-16 w-28 items-center rounded-full border-[3px] border-[var(--color-text)] bg-[var(--color-surface)] p-1 transition-all duration-200 ease-out hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
-            {theme === 'light' ? 'Tema oscuro' : 'Tema claro'}
+            <span
+              className={`absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-[var(--color-text)] bg-[var(--color-bg)] text-[var(--color-text)] transition-transform duration-300 ease-out ${
+                isDark ? 'translate-x-12' : 'translate-x-0'
+              }`}
+            >
+              {isDark ? <Moon size={18} strokeWidth={2.5} /> : <SunMedium size={18} strokeWidth={2.5} />}
+            </span>
           </button>
         </div>
 

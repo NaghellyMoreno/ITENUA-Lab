@@ -19,6 +19,9 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
-*.njsproj
+*.njsprojß
 *.sln
 *.sw?
+
+#Contexto proyecto 
+CONTEXTO.md
